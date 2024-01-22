@@ -36,8 +36,10 @@ def compare_pages(new_content, old_content):
     return differences
 
 def main():
-    new_page = download_page(URL)
+    # new_page = download_page(URL) を削除
     old_page = load_page(PREVIOUS_PAGE_FILE)
+    new_page = load_page(PAGE_FILE)  # curlによってダウンロードされたページを読み込む
+
     differences = compare_pages(new_page, old_page)
 
     if differences:
