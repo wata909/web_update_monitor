@@ -24,9 +24,9 @@ jobs:
           run: |
             pip install beautifulsoup4
 
-        - name: Download Web Page with wget
+        - name: Download Web Page
           run: |
-              wget -O latest_page.html https://www.gsi.go.jp/BOUSAI/20240101_noto_earthquake.html
-          
+            curl -o latest_page.html https://www.gsi.go.jp/BOUSAI/20240101_noto_earthquake.html
+
         - name: Check for Web Page Updates
           run: python check_updates.py
