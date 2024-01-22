@@ -1,0 +1,29 @@
+name: Web Page Monitor
+
+on:
+  schedule:
+  schedule:
+    - cron: '0 23 * * *'  # 日本時間で翌日8時（UTCで前日の23時）に実行
+    - cron: '0 4 * * *'   # 日本時間で13時（UTCで4時）に実行
+    - cron: '0 9 * * *'   # 日本時間で18時（UTCで9時）に実行
+  workflow_dispatch:
+
+jobs:
+  check-web-page:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install requests beautifulsoup4
+
+    - name: Check for Web Page Updates
+      run: python check_updates.py
