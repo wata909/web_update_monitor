@@ -2,15 +2,22 @@ import requests
 from bs4 import BeautifulSoup
 import difflib
 import os
+import subprocess
 
-URL = "https://www.gsi.go.jp/BOUSAI/20240101_noto_earthquake.html"
+# URL = "https://www.gsi.go.jp/BOUSAI/20240101_noto_earthquake.html"
+URL = "https://www.yahoo.co.jp"
 PAGE_FILE = "latest_page.html"
 PREVIOUS_PAGE_FILE = "previous_page.html"
 
-def download_page(url):
-    response = requests.get(url)
-    response.raise_for_status()
-    return response.text
+def download_page_with_curl(url, filename):
+    command = f"curl -o {filename} {url}"
+    subprocess.run(command, check=True, shell=True)
+
+# def download_page(url):
+#     response = requests.get(url)
+#     response.raise_for_status()
+#     response.encoding = 'utf-8'  # エンコーディングを明示
+#     return response.text
 
 def save_page(content, filename):
     with open(filename, "w", encoding="utf-8") as file:
