@@ -1,10 +1,10 @@
 name: Web Page Monitor
 
 on:
-  schedule:
-    - cron: '0 23 * * *'  # 日本時間で翌日8時（UTCで前日の23時）に実行
-    - cron: '0 4 * * *'   # 日本時間で13時（UTCで4時）に実行
-    - cron: '0 9 * * *'   # 日本時間で18時（UTCで9時）に実行
+#  schedule:
+#    - cron: '0 23 * * *'  # 日本時間で翌日8時（UTCで前日の23時）に実行
+#    - cron: '0 4 * * *'   # 日本時間で13時（UTCで4時）に実行
+#    - cron: '0 9 * * *'   # 日本時間で18時（UTCで9時）に実行
   workflow_dispatch:
 
 jobs:
